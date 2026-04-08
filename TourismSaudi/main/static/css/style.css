@@ -261,7 +261,7 @@ body {
 .all-cities-section h1 {
     text-align: center;
     margin-bottom: 50px;
-    color: #2f2b4e;
+    color: #f9f9f9;
     font-size: 36px;
 }
 
@@ -335,4 +335,188 @@ body {
 /* تنسيق إضافي ليتناسب مع الاتجاه العربي */
 body[dir="rtl"] .section-header {
     flex-direction: row-reverse; /* يقلب الأماكن في العربي */
+}
+
+/* --- تنسيق الناف بار (الملاحة) --- */
+.navbar {
+    position: absolute; /* يجعله فوق الفيديو */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 20px 50px;
+    background: transparent; /* شفاف في البداية */
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    color:white;
+}
+
+.logo {
+    width: 120px; /* حجم الشعار */
+    height: auto;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* مسافة بين الروابط */
+}
+
+.nav-right a {
+    text-decoration: none;
+    color: white; /* لون النص فوق الفيديو */
+    font-weight: 500;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.nav-right a:hover {
+    color: #fca311; /* يتغير للأصفر عند التأشير */
+}
+
+/* أزرار اللغة الصغيرة في الناف بار */
+.lang-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid white;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.lang-btn:hover {
+    background: white;
+    color: black;
+}
+
+/* تعديل الاتجاه للعربي */
+body[dir="rtl"] .nav-container {
+    flex-direction: row-reverse;
+}
+
+/* رأس الصفحة */
+.city-detail-header {
+    height: 40vh;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/static/images/riyadh-skyline.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+/* حاوية الأزرار */
+.filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 30px;
+    flex-wrap: wrap;
+    background: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.filter-btn {
+    padding: 10px 22px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+    color: #555;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background: #2f2b4e;
+    color: white;
+    border-color: #2f2b4e;
+    box-shadow: 0 4px 15px rgba(47, 43, 78, 0.2);
+}
+
+/* شبكة الـ 18 كارد */
+.riyadh-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 كروت في الصف */
+    gap: 25px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* تصميم الكارد المطور */
+.filter-item {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 992px) {
+    .riyadh-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+    .riyadh-grid { grid-template-columns: 1fr; }
+}
+
+/* تعريف الألوان الافتراضية (Light Mode) */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #2f2b4e;
+    --card-bg: #ffffff;
+    --navbar-bg: rgba(255, 255, 255, 0.95);
+}
+
+/* تعريف ألوان الـ Dark Mode */
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --card-bg: #1e1e1e;
+    --navbar-bg: rgba(18, 18, 18, 0.95);
+}
+
+/* تطبيق المتغيرات على الجسم والعناصر */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s; /* انتقال ناعم */
+    font-size: 16px; /* الحجم الابتدائي */
+}
+
+/* تعديل الكروت لتتأثر بالمود */
+.city-card {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+}
+
+/* تنسيق أزرار التحكم */
+.accessibility-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.accessibility-controls button {
+    background: #fca311;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
 }

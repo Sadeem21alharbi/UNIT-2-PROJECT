@@ -1,0 +1,115 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Tabuk{% endblock %}
+{% block content %}
+<main>
+    <section class="city-detail-header">
+        <h1 class="translate-text" 
+            data-ar="مدينة تبوك " 
+            data-en="Tabuk City">
+            Tabuk City
+        </h1>
+    </section>
+
+    <div class="filter-container">
+        <button class="filter-btn active translate-text" data-ar="الكل" data-en="All" onclick="filterSelection('all')">All</button>
+        <button class="filter-btn translate-text" data-ar="طبيعة" data-en="Nature" onclick="filterSelection('nature')">Nature</button>
+        <button class="filter-btn translate-text" data-ar="ثقافة وتاريخ" data-en="Culture & History" onclick="filterSelection('culture')">Culture & History</button>
+        <button class="filter-btn translate-text" data-ar="تسوق" data-en="Shopping" onclick="filterSelection('shopping')">Shopping</button>
+        <button class="filter-btn translate-text" data-ar="بحر" data-en="Sea" onclick="filterSelection('sea')">Sea</button>
+        <button class="filter-btn translate-text" data-ar="صحراء" data-en="Desert" onclick="filterSelection('desert')">Desert</button>
+        <button class="filter-btn translate-text" data-ar="ثلوج" data-en="Snow" onclick="filterSelection('snow')">Snow</button>
+        <button class="filter-btn translate-text" data-ar="أودية" data-en="Valley" onclick="filterSelection('valley')">Valley</button>
+        <button class="filter-btn translate-text" data-ar="ترفية" data-en="Entertaiment" onclick="filterSelection('entertaiment')">Entertaiment</button>
+    </div>
+
+    <div class="riyadh-grid">
+        
+        <div class="city-card filter-item sea">
+            <div class="card-image"><img src="{% static 'images/n-shebara.jpg' %}" alt="Shebara"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" جزيرة شيبارة " data-en="Shebara Island">Shebara Island</h3>
+                <p class="translate-text" data-ar="بحر " data-en="Sea">Sea</p>
+            </div>
+        </div>
+
+        <div class="city-card filter-item sea">
+            <div class="card-image"><img src="{% static 'images/shura.jpg' %}" alt="Shura"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" جزيرة شورى " data-en="Shura Island">Shura Island</h3>
+                <p class="translate-text" data-ar="بحر " data-en="Sea">Sea</p>
+            </div>
+        </div>
+
+        <div class="city-card filter-item sea">
+            <div class="card-image"><img src="{% static 'images/Amhat.jpg' %}" alt="Shebara"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" جزيرة أمهات " data-en="Amhat Island">Amhat Island</h3>
+                <p class="translate-text" data-ar="بحر " data-en="Sea">Sea</p>
+            </div>
+        </div>
+
+        <div class="city-card filter-item snow">
+            <div class="card-image"><img src="{% static 'images/Trojena.jpg' %}" alt="Trojena"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" تروجينا " data-en="Trojena"> Trojena </h3>
+                <p class="translate-text" data-ar="ثلج " data-en="Snow">Snow</p>
+            </div>
+        </div>
+
+        <div class="city-card filter-item snow">
+            <div class="card-image"><img src="{% static 'images/AlLouz-mount.jpg' %}" alt="Al Louz Mountain"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" جبل اللوز " data-en="Al Louz Mountain"> Al Louz Mountain</h3>
+                <p class="translate-text" data-ar="ثلج " data-en="Snow">Snow</p>
+            </div>
+        </div>
+
+        <div class="city-card filter-item nature">
+            <div class="card-image"><img src="{% static 'images/desah.jpg' %}" alt="Al Dessah"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" الديسة " data-en="Al Dessah"> Al Dessah </h3>
+                <p class="translate-text" data-ar=" طبيعة " data-en="Nature">Nature</p>
+                </div>
+        </div>
+
+        <div class="city-card filter-item culture">
+            <div class="card-image"><img src="{% static 'images/tabukVillage.jpg' %}" alt="Tabuk Village"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" قلعة تبوك " data-en="Tabuk Village"> Tabuk Village </h3>
+                <p class="translate-text" data-ar=" ثقافة و تاريخ " data-en="Culture & History "> Culture & History </p>
+            </div>
+        </div>
+
+        <div class="city-card filter-item shopping">
+            <div class="card-image"><img src="{% static 'images/tabukPark.jpg' %}" alt="Tabuk Park"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" تبوك بارك مول " data-en="Tabuk Park Mall"> Tabuk Park Mall </h3>
+                <p class="translate-text" data-ar=" تسوق " data-en="Shopping "> Shopping </p>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<script>
+// وظيفة التصفية (Filtering)
+function filterSelection(c) {
+    var x, i;
+    x = document.getElementsByClassName("filter-item");
+    if (c == "all") c = "";
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+        if (x[i].className.indexOf(c) > -1) {
+            x[i].style.display = "block";
+        }
+    }
+    // تغيير شكل الزر النشط
+    var btns = document.getElementsByClassName("filter-btn");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].classList.remove("active");
+    }
+    event.currentTarget.classList.add("active");
+}
+</script>
+{% endblock %}

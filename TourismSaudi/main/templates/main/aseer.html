@@ -1,0 +1,59 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Tabuk{% endblock %}
+{% block content %}
+<main>
+    <section class="city-detail-header">
+        <h1 class="translate-text" 
+            data-ar=" منطقة عسير " 
+            data-en="Aseer City">
+            Aseer City
+        </h1>
+    </section>
+
+    <div class="filter-container">
+        <button class="filter-btn active translate-text" data-ar="الكل" data-en="All" onclick="filterSelection('all')">All</button>
+        <button class="filter-btn translate-text" data-ar="طبيعة" data-en="Nature" onclick="filterSelection('nature')">Nature</button>
+        <button class="filter-btn translate-text" data-ar="ثقافة وتاريخ" data-en="Culture & History" onclick="filterSelection('culture')">Culture & History</button>
+        <button class="filter-btn translate-text" data-ar="تسوق" data-en="Shopping" onclick="filterSelection('shopping')">Shopping</button>
+        <button class="filter-btn translate-text" data-ar="بحر" data-en="Sea" onclick="filterSelection('sea')">Sea</button>
+        <button class="filter-btn translate-text" data-ar="صحراء" data-en="Desert" onclick="filterSelection('desert')">Desert</button>
+        <button class="filter-btn translate-text" data-ar="ثلوج" data-en="Snow" onclick="filterSelection('snow')">Snow</button>
+        <button class="filter-btn translate-text" data-ar="أودية" data-en="Valley" onclick="filterSelection('valley')">Valley</button>
+        <button class="filter-btn translate-text" data-ar="ترفية" data-en="Entertaiment" onclick="filterSelection('entertaiment')">Entertaiment</button>
+    </div>
+
+    <div class="riyadh-grid">
+        
+        <div class="city-card filter-item sea">
+            <div class="card-image"><img src="{% static 'images/n-shebara.jpg' %}" alt="Art Street"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" شارع الفن " data-en="Art Street">Art Street</h3>
+                <p class="translate-text" data-ar="ترفية " data-en="Entertaiment">Entertaiment</p>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<script>
+// وظيفة التصفية (Filtering)
+function filterSelection(c) {
+    var x, i;
+    x = document.getElementsByClassName("filter-item");
+    if (c == "all") c = "";
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+        if (x[i].className.indexOf(c) > -1) {
+            x[i].style.display = "block";
+        }
+    }
+    // تغيير شكل الزر النشط
+    var btns = document.getElementsByClassName("filter-btn");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].classList.remove("active");
+    }
+    event.currentTarget.classList.add("active");
+}
+</script>
+{% endblock %}

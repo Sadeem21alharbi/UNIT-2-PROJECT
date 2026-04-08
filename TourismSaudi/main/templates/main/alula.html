@@ -1,0 +1,96 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Al Ula{% endblock %}
+{% block content %}
+<main>
+    <section class="city-detail-header">
+        <h1 class="translate-text" 
+            data-ar=" العلا " 
+            data-en="Al Ula">
+            Al Ula City
+        </h1>
+    </section>
+
+    <div class="filter-container">
+        <button class="filter-btn active translate-text" data-ar="الكل" data-en="All" onclick="filterSelection('all')">All</button>
+        <button class="filter-btn translate-text" data-ar="طبيعة" data-en="Nature" onclick="filterSelection('nature')">Nature</button>
+        <button class="filter-btn translate-text" data-ar="ثقافة وتاريخ" data-en="Culture & History" onclick="filterSelection('culture')">Culture & History</button>
+        <button class="filter-btn translate-text" data-ar="صحراء" data-en="Desert" onclick="filterSelection('desert')">Desert</button>
+        <button class="filter-btn translate-text" data-ar="أودية" data-en="Valley" onclick="filterSelection('valley')">Valley</button>
+        <button class="filter-btn translate-text" data-ar="ترفية" data-en="Entertaiment" onclick="filterSelection('entertaiment')">Entertaiment</button>
+    </div>
+
+    <div class="riyadh-grid">
+        
+        <div class="city-card filter-item entertaiment">
+            <div class="card-image"><img src="{% static 'images/mirorr.jpg' %}" alt="Mirror"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" المرايا " data-en="Mirror">Mirror</h3>
+                <p class="translate-text" data-ar="ترفية " data-en="Entertaiment">Entertaiment</p>
+            </div>
+        </div>
+
+        <div class="city-card filter-item entertaiment">
+            <div class="card-image"><img src="{% static 'images/hot-air-ballon.jpg' %}" alt="Ballon"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" منطاب الهواء الساخن " data-en=" Hot-Air Ballon ">Hot-Air Ballon</h3>
+                <p class="translate-text" data-ar=" ترفية " data-en="entertaiment">entertaiment</p>
+            </div>
+        </div>
+
+        <div class="city-card filter-item culture">
+            <div class="card-image"><img src="{% static 'images/old-town.jpg' %}" alt="Old Town"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" البلدة القديمة  " data-en=" The Old Town ">The Old Town</h3>
+                <p class="translate-text" data-ar="ثقافة و تاريخ " data-en="Culture & History">Culture & History</p>
+            </div>
+        </div>
+
+        <div class="city-card filter-item culture nature">
+            <div class="card-image"><img src="{% static 'images/salehMadan.jpg' %}" alt="Madan Saleh"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" مدائن صالح " data-en="Al-Hijr"> Al-Hijr </h3>
+                <p class="translate-text" data-ar=" ثقافة وتاريخ " data-en="Culture & History">Culture & History</p>
+            </div>
+        </div>
+
+        <div class="city-card filter-item nature entertaiment">
+            <div class="card-image"><img src="{% static 'images/elephRock.jpg' %}" alt="elephRock"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" جبل الفيل " data-en="Elephant Rock"> Elephant Rock</h3>
+                <p class="translate-text" data-ar="طبيعة و ترفية " data-en="Nature & Entertaiment">Nature & Entertaiment</p>
+            </div>
+        </div>
+
+        <div class="city-card filter-item nature entertaiment">
+            <div class="card-image"><img src="{% static 'images/farm.jpg' %}" alt="farm"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" مزرعة عائلة الجود " data-en="Al-Joud Family Farm"> Al-Joud Family Farm</h3>
+                <p class="translate-text" data-ar="طبيعة و ترفية " data-en="Nature & Entertaiment">Nature & Entertaiment</p>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<script>
+// وظيفة التصفية (Filtering)
+function filterSelection(c) {
+    var x, i;
+    x = document.getElementsByClassName("filter-item");
+    if (c == "all") c = "";
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+        if (x[i].className.indexOf(c) > -1) {
+            x[i].style.display = "block";
+        }
+    }
+    // تغيير شكل الزر النشط
+    var btns = document.getElementsByClassName("filter-btn");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].classList.remove("active");
+    }
+    event.currentTarget.classList.add("active");
+}
+</script>
+{% endblock %}

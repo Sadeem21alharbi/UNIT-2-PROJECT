@@ -16,6 +16,6 @@ urlpatterns = [
     path("Aljouf/", views.aljouf_view, name="aljouf_view"),
     path("Alula/", views.alula_view, name="alula_view"),
     path("Altaif/", views.taif_view, name="taif_view"),
-    path("view/all", views.discover_view, name="discover_view")
+    path("view/all", views.discover_view, name="discover_view"),
 
 ]

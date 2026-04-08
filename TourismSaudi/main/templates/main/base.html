@@ -9,14 +9,15 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="nav-left">
-            <img class="logo" src="{% static 'images/Saudi-logo-rm.png' %}">
-        </div>
-        <div class="nav-right">
-            <a href="{% url 'main:home_view' %}" class="translate-text" data-ar="الرئيسية" data-en="Home">Home</a>
-            <a href="#contact" class="translate-text" data-ar="تواصل معنا" data-en="Contact">Contact</a>
-            <a href="#" class="translate-text" data-ar="سجل دخول" data-en="Log in">Log in</a>
-        </div>
+        <div class ="nav-container">
+            <div class="nav-left">
+                <img class="logo" src="{% static 'images/Saudi-logo-rm.png' %}">
+            </div>
+            <div class="nav-right">
+                <a href="{% url 'main:home_view' %}" class="translate-text" data-ar="الرئيسية" data-en="Home">Home</a>
+                <a href="#contact" class="translate-text" data-ar="تواصل معنا" data-en="Contact">Contact</a>
+                <a href="#" class="translate-text" data-ar="سجل دخول" data-en="Log in">Log in</a>
+            </div>
     </nav>
 
     {% block content %}{% endblock %}
@@ -43,31 +44,81 @@
             <button onclick="changeLanguage('ar')">العربية</button>
             <button onclick="changeLanguage('en')">English</button>
         </div>
+        <div class="accessibility-controls">
+        <button onclick="changeFontSize('increase')" title="A+">A+</button>
+        <button onclick="changeFontSize('decrease')" title="A-">A-</button>
+        
+        <button id="theme-toggle" onclick="toggleTheme()">
+            <span id="theme-icon">🌙</span> </button>
+        </div>
         <p>&copy; 2026 Let's Discover Saudi. All rights reserved.</p>
     </footer>
 
-    <script>
-        function scrollSlider(direction) {
-            const slider = document.querySelector('.cards-container');
-            const scrollAmount = 350; 
-            if (slider) {
-                slider.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
-            }
+        <script>
+    // --- أولاً: وظائف الكوكيز (يجب أن تكون موجودة ليشتغل الكود) ---
+    function setCookie(name, value, days) {
+        let expires = "";
+        if (days) {
+            let date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
         }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    }
 
-        function changeLanguage(lang) {
-            const elements = document.querySelectorAll('.translate-text');
-            elements.forEach(el => {
-                el.innerText = lang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute('data-en');
-            });
-            document.body.dir = (lang === 'ar') ? 'rtl' : 'ltr';
-            localStorage.setItem('prefLang', lang);
+    function getCookie(name) {
+        let nameEQ = name + "=";
+        let ca = document.cookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
         }
+        return null;
+    }
 
-        window.onload = () => {
-            const saved = localStorage.getItem('prefLang') || 'en';
-            changeLanguage(saved);
-        };
+    // --- ثانياً: التحكم في حجم الخط ---
+    // أضفنا let هنا لتعريف المتغير بشكل صحيح
+    let currentFontSize = parseInt(getCookie('fontSize')) || 16;
+    document.body.style.fontSize = currentFontSize + "px";
+
+    function changeFontSize(action) {
+        if (action === 'increase' && currentFontSize < 24) {
+            currentFontSize += 2;
+        } else if (action === 'decrease' && currentFontSize > 12) {
+            currentFontSize -= 2;
+        }
+        document.body.style.fontSize = currentFontSize + "px";
+        setCookie('fontSize', currentFontSize, 7);
+    }
+
+    // --- ثالثاً: التحكم في الدارك مود ---
+    let currentTheme = getCookie('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+
+    function toggleTheme() {
+        let theme = document.documentElement.getAttribute('data-theme');
+        let newTheme = (theme === 'light') ? 'dark' : 'light';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        setCookie('theme', newTheme, 7);
+        updateThemeIcon(newTheme);
+    }
+
+    function updateThemeIcon(theme) {
+        const icon = document.getElementById('theme-icon');
+        if (icon) {
+            icon.innerText = (theme === 'light') ? '🌙' : '☀️';
+        }
+    }
+
+    // انتظر تحميل الصفحة ثم طبق الإعدادات
+    window.addEventListener('DOMContentLoaded', () => {
+        updateThemeIcon(getCookie('theme') || 'light');
+        // تأكدي من تطبيق الخط عند التحميل أيضاً
+        document.body.style.fontSize = (getCookie('fontSize') || 16) + "px";
+    });
     </script>
+    
 </body>
 </html>

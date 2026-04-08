@@ -31,7 +31,7 @@ def aljouf_view(request):
     return render(request, 'main/aljouf.html')
 
 def tabuk_view(request):
-    return render(request, 'main/aljouf.html')
+    return render(request, 'main/tabuk.html')
 
 def alula_view(request):
     return render(request, 'main/alula.html')
