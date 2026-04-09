@@ -1,0 +1,112 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Taif{% endblock %}
+{% block content %}
+<main>
+    <section class="city-detail-header">
+        <h1 class="translate-text" 
+            data-ar=" الطائف " 
+            data-en=" Taif City">
+            Taif City
+        </h1>
+    </section>
+
+    <div class="filter-container">
+        <button class="filter-btn active translate-text" data-ar="الكل" data-en="All" onclick="filterSelection('all')">All</button>
+        <button class="filter-btn translate-text" data-ar="طبيعة" data-en="Nature" onclick="filterSelection('nature')">Nature</button>
+        <button class="filter-btn translate-text" data-ar="ثقافة وتاريخ" data-en="Culture & History" onclick="filterSelection('culture')">Culture & History</button>
+        <button class="filter-btn translate-text" data-ar="تسوق" data-en="Shopping" onclick="filterSelection('shopping')">Shopping</button>
+        <button class="filter-btn translate-text" data-ar="أودية" data-en="Valley" onclick="filterSelection('valley')">Valley</button>
+        <button class="filter-btn translate-text" data-ar="ترفية" data-en="Entertaiment" onclick="filterSelection('entertaiment')">Entertaiment</button>
+    </div>
+
+    <div class="riyadh-grid">
+    
+        <div class="city-card filter-item nature">
+            <div class="card-image"><img src="{% static 'images/alhada-mount.jpg' %}" alt="Alhada Mountain"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" جبل الهدا " data-en="Alhada Mountain">Alhada Mountain</h3>
+                <p class="translate-text" data-ar="طبيعة " data-en="Nature">Nature</p>
+            </div>
+        </div>
+
+         <div class="city-card filter-item nature">
+            <div class="card-image"><img src="{% static 'images/taif-rose.jpg' %}" alt="Taif Rose"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" الورد الطائفي " data-en="Taif Rose"> Taif Rose</h3>
+                <p class="translate-text" data-ar="طبيعة " data-en="Nature">Nature</p>
+            </div>
+        </div>
+
+         <div class="city-card filter-item culture">
+            <div class="card-image"><img src="{% static 'images/shabra.jpg' %}" alt="Shabra"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" قصر شبرا " data-en=" Shabra Castle"> Shabra Castle </h3>
+                <p class="translate-text" data-ar="ثقافةو تاريخ " data-en="Culture & History">Culture & History</p>
+            </div>
+        </div>
+
+        <div class="city-card filter-item culture">
+            <div class="card-image"><img src="{% static 'images/taif-musuem.jpg' %}" alt="taif-musuem"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" متحف الشريف " data-en=" Al-Sharif Musuem "> Al-Sharif Musuem </h3>
+                <p class="translate-text" data-ar="ثقافةو تاريخ " data-en="Culture & History">Culture & History</p>
+            </div>
+        </div>
+        
+        <div class="city-card filter-item culture">
+            <div class="card-image"><img src="{% static 'images/tera-mall.jpg' %}" alt="Tera Mall"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" تيرا مول " data-en=" Tera Mall "> Tera Mall </h3>
+                <p class="translate-text" data-ar=" تسوق " data-en="Shopping">Shopping</p>
+            </div>
+        </div>
+
+        <div class="city-card filter-item entertaiment">
+            <div class="card-image"><img src="{% static 'images/alradaf.jpg' %}" alt="Al-Radaf Park"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" منتزة الردف " data-en=" Al-Radaf Park "> Al-Radaf Park </h3>
+                <p class="translate-text" data-ar=" ترفية " data-en="entertaiment">entertaiment</p>
+            </div>
+        </div>
+        
+        <div class="city-card filter-item entertaiment">
+            <div class="card-image"><img src="{% static 'images/strawberry-taif.jpg' %}" alt="Strawberry farm"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" مزرعة الفرالة " data-en=" Strawberry Farm "> Strawberry Farm </h3>
+                <p class="translate-text" data-ar=" ترفية " data-en="entertaiment">entertaiment</p>
+            </div>
+        </div>
+
+        <div class="city-card filter-item entertaiment">
+            <div class="card-image"><img src="{% static 'images/rassberry.jpg' %}" alt="rasberry town"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" قرية التوت " data-en="Rassberry Town"> Rassberry Town</h3>
+                <p class="translate-text" data-ar=" ترفية " data-en="entertaiment">entertaiment</p>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<script>
+// وظيفة التصفية (Filtering)
+function filterSelection(c) {
+    var x, i;
+    x = document.getElementsByClassName("filter-item");
+    if (c == "all") c = "";
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+        if (x[i].className.indexOf(c) > -1) {
+            x[i].style.display = "block";
+        }
+    }
+    // تغيير شكل الزر النشط
+    var btns = document.getElementsByClassName("filter-btn");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].classList.remove("active");
+    }
+    event.currentTarget.classList.add("active");
+}
+</script>
+{% endblock %}

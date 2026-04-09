@@ -1,6 +1,6 @@
 {% extends 'main/base.html' %}
 {% load static %}
-{% block title %}Tabuk{% endblock %}
+{% block title %}Aseer{% endblock %}
 {% block content %}
 <main>
     <section class="city-detail-header">
@@ -16,22 +16,77 @@
         <button class="filter-btn translate-text" data-ar="طبيعة" data-en="Nature" onclick="filterSelection('nature')">Nature</button>
         <button class="filter-btn translate-text" data-ar="ثقافة وتاريخ" data-en="Culture & History" onclick="filterSelection('culture')">Culture & History</button>
         <button class="filter-btn translate-text" data-ar="تسوق" data-en="Shopping" onclick="filterSelection('shopping')">Shopping</button>
-        <button class="filter-btn translate-text" data-ar="بحر" data-en="Sea" onclick="filterSelection('sea')">Sea</button>
-        <button class="filter-btn translate-text" data-ar="صحراء" data-en="Desert" onclick="filterSelection('desert')">Desert</button>
-        <button class="filter-btn translate-text" data-ar="ثلوج" data-en="Snow" onclick="filterSelection('snow')">Snow</button>
         <button class="filter-btn translate-text" data-ar="أودية" data-en="Valley" onclick="filterSelection('valley')">Valley</button>
         <button class="filter-btn translate-text" data-ar="ترفية" data-en="Entertaiment" onclick="filterSelection('entertaiment')">Entertaiment</button>
     </div>
 
     <div class="riyadh-grid">
         
-        <div class="city-card filter-item sea">
-            <div class="card-image"><img src="{% static 'images/n-shebara.jpg' %}" alt="Art Street"></div>
+        <div class="city-card filter-item entertaiment nature">
+            <div class="card-image"><img src="{% static 'images/art-street.jpg' %}" alt="Art Street"></div>
             <div class="card-content">
                 <h3 class="translate-text" data-ar=" شارع الفن " data-en="Art Street">Art Street</h3>
                 <p class="translate-text" data-ar="ترفية " data-en="Entertaiment">Entertaiment</p>
             </div>
         </div>
+
+        <div class="city-card filter-item entertaiment nature">
+            <div class="card-image"><img src="{% static 'images/high-city.jpg' %}" alt="High City"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" مطل المدينة العالية " data-en=" High City ">High City</h3>
+                <p class="translate-text" data-ar="ترفية " data-en="Entertaiment">Entertaiment</p>
+            </div>
+        </div>
+
+        <div class="city-card filter-item entertaiment">
+            <div class="card-image"><img src="{% static 'images/sudah-mount.jpg' %}" alt="Sudah Mountain"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" جبل السودة " data-en=" Sudah Mountain "> Sudah Mountain </h3>
+                <p class="translate-text" data-ar="ترفية " data-en="Entertaiment">Entertaiment</p>
+            </div>
+        </div>
+
+        <div class="city-card filter-item entertaiment">
+            <div class="card-image"><img src="{% static 'images/Fog-walkway.jpg' %}" alt="Fog Walkway"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" ممشى الضباب " data-en=" Fog Walkway "> Fog Walkway </h3>
+                <p class="translate-text" data-ar="ترفية " data-en="Entertaiment">Entertaiment</p>
+            </div>
+        </div>
+
+        <div class="city-card filter-item entertaiment">
+            <div class="card-image"><img src="{% static 'images/Honey-Tower.jpg' %}" alt="Honey Tower"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" كوخ العسل " data-en=" Bees Tower Honey Refinery ">  Bees Tower Honey Refinery </h3>
+                <p class="translate-text" data-ar="ترفية " data-en="Entertaiment">Entertaiment</p>
+            </div>
+        </div>
+
+        <div class="city-card filter-item entertaiment">
+            <div class="card-image"><img src="{% static 'images/farm-aseer.jpg' %}" alt="Farm Aseer"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" مزرعة الليوان " data-en=" Liwan Farm "> Liwan Farm </h3>
+                <p class="translate-text" data-ar="ترفية " data-en="Entertaiment">Entertaiment</p>
+            </div>
+        </div>
+
+        <div class="city-card filter-item entertaiment">
+            <div class="card-image"><img src="{% static 'images/strawberry-farm.jpg' %}" alt="Farm Aseer"></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" مزرعة السحاب للفراولة " data-en=" Strawberry Farm "> Strawberry Farm </h3>
+                <p class="translate-text" data-ar="ترفية " data-en="Entertaiment">Entertaiment</p>
+            </div>
+        </div>
+
+        <div class="city-card filter-item nature valley">
+            <div class="card-image"><img src="{% static 'images/DA-valley.jpg' %}" alt=" Dabuei Valley "></div>
+            <div class="card-content">
+                <h3 class="translate-text" data-ar=" سد ضبوعي " data-en=" Dabuei Valley "> Dabuei Valley </h3>
+                <p class="translate-text" data-ar="طبيعة " data-en="nature">nature</p>
+            </div>
+        </div>
+
+        
 
     </div>
 </main>
